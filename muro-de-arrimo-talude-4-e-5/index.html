@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Relatório de Evolução de Obra: Muro de Arrimo - Talude 4 e 5</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--ink:#2A2630;--muted:#6B5E55;--line:#E8632B;--bg:#E4E2DF;--card:#FFFFFF;--laranja:#E8632B;--bege:#EFE3D3}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink:#F3EEE8;--muted:#CDBFB2;--bg:#262428;--card:#34313A;--bege:#5A4A3E}}
+:root[data-theme="dark"]{--ink:#F3EEE8;--muted:#CDBFB2;--bg:#262428;--card:#34313A;--bege:#5A4A3E}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Tahoma,Verdana,Arial,sans-serif}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{position:absolute;top:0;left:0;width:1280px;height:720px;transform-origin:0 0}
+.page{position:absolute;inset:0;background:var(--bg);display:none;overflow:hidden}
+.page.on{display:block}
+.box{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow:hidden}
+.box.escuro{background:#2A2630;border-color:var(--laranja)}
+.box.escuro h2{color:#F3EEE8}
+h2{font:bold 15px 'Courier New',Courier,monospace;margin:0 0 8px}
+.logo{position:absolute;left:0;top:0;border-radius:50%;object-fit:cover;z-index:3}
+.s{width:95px;height:97px}
+.l{width:271px;height:270px}
+.topo{margin-left:110px}
+.cnt{position:relative;height:calc(100% - 34px)}
+.leg{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;font:13px 'Courier New',Courier,monospace;color:#F3EEE8;margin:0 0 8px}
+.centro{text-align:center;margin:0 0 8px;font-size:28px;line-height:1.2}
+.leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:middle}
+table{width:100%;border-collapse:collapse;font-size:12px;font-family:'Courier New',Courier,monospace}
+th,td{border-bottom:1px solid var(--line);padding:6px 5px;text-align:left;vertical-align:top}
+#tabela td{white-space:pre-line}
+#dicaEtapa{position:absolute;display:none;z-index:20;pointer-events:none;white-space:nowrap;background:#F3EEE8;color:#2A2630;border-radius:6px;padding:6px 10px;font:13px 'Courier New',Courier,monospace;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+#dicaEtapa i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+th{color:var(--ink);background:var(--bege);font-weight:bold}
+.card-n{font:bold 48px Tahoma,Verdana,sans-serif;color:var(--laranja);margin-top:6px;text-align:center}
+.bot button{border:2px solid var(--laranja);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;margin:2px;cursor:pointer;font:13px 'Courier New',Courier,monospace}
+.bot button.on{background:var(--laranja);color:#fff}
+#slicer button{font:15px 'Courier New',Courier,monospace;padding:9px 16px}
+.quad{padding:8px 14px}
+.quad h2{font-size:14px;line-height:1.2;margin:0 0 2px}
+.quad .card-n{font:bold 30px/1.1 Tahoma,Verdana,sans-serif;margin:0}
+.quad .cap{text-align:center;font:11px/1.2 Tahoma,Verdana,sans-serif;color:var(--muted);margin-top:2px}
+.lbl{position:absolute;text-align:center;font:24px 'Courier New',Courier,monospace;color:var(--ink)}
+.fl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:22px;line-height:28px;height:28px}
+.foto{background-color:rgba(42,38,48,.06);border:3px solid var(--laranja);border-radius:16px;background-size:contain;background-repeat:no-repeat;background-position:center;overflow:hidden}
+#gradeSem{display:grid;grid-template-columns:70px repeat(5,1fr);grid-template-rows:34px 1fr 1fr;gap:8px;height:calc(100% - 40px)}
+.dia{font:bold 13px 'Courier New',Courier,monospace;color:#F3EEE8;text-align:center;align-self:center;white-space:nowrap}
+.per{font:bold 14px 'Courier New',Courier,monospace;color:#F3EEE8;align-self:center}
+.cel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:2px solid var(--laranja);border-radius:12px;color:#F3EEE8;font:13px 'Courier New',Courier,monospace;text-align:center;padding:6px}
+#nav{position:absolute;left:0;top:664px;width:1280px;height:55px;z-index:10;display:flex;align-items:center;gap:14px;padding:0 10px}
+#nav button{flex:1;height:46px;border:3px solid var(--laranja);border-radius:999px;background:#EFEFEF;color:#2A2630;font:bold 16px 'Courier New',Courier,monospace;cursor:pointer}
+#nav button.on{background:#22202C;color:#fff}
+#girar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;background:#22202C;color:#fff;padding:10px 14px;font:13px 'Courier New',Courier,monospace;text-align:center}
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+<section class="page on" id="p0">
+  <img data-img="fundo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
+  <div class="box" style="left:803px;top:39px;width:459px;height:80px;background:#FFFFFF;border:2px solid var(--laranja);border-radius:12px"></div>
+  <div id="capaTitulo" style="position:absolute;left:797px;top:52px;width:483px;text-align:center;font:bold 16px 'Courier New',Courier,monospace;line-height:1.4;color:#2A2630"></div>
+  <img class="logo l" data-img="logo">
+</section>
+
+<section class="page" id="p1">
+  <div class="box escuro" style="left:0;top:21px;width:1280px;height:633px;border-radius:16px">
+    <h2 class="centro">Evolução de obra</h2>
+    <div class="cnt" style="margin-top:26px;height:calc(100% - 76px)"><canvas id="cLinha"></canvas></div>
+  </div>
+  <img class="logo s" data-img="logo">
+</section>
+
+<section class="page" id="p2">
+  <div class="box escuro" style="left:0;top:32px;width:878px;height:615px">
+    <h2 class="centro">Evolução por etapa</h2>
+    <div class="leg" id="legBarra"></div>
+    <div class="cnt" style="height:calc(100% - 82px)"><canvas id="cBarra"></canvas></div>
+  </div>
+  <div class="box" style="left:895px;top:32px;width:385px;height:95px">
+    <h2>Semana de seleção</h2>
+    <div class="bot" id="slicer"></div>
+  </div>
+  <div class="box" style="left:895px;top:137px;width:385px;height:118px">
+    <h2>Total executado da obra</h2>
+    <div class="card-n" id="card"></div>
+  </div>
+  <div class="box" style="left:895px;top:265px;width:385px;height:382px;overflow:auto">
+    <h2>Atividades em andamento</h2>
+    <div id="tituloAtiv" style="font:bold 14px 'Courier New',Courier,monospace;color:var(--laranja);margin:0 0 10px"></div>
+    <table id="tabela"></table>
+  </div>
+  <img class="logo s" data-img="logo">
+</section>
+
+<section class="page" id="p3">
+  <div class="box escuro" style="left:0;top:32px;width:878px;height:615px">
+    <h2 class="centro" id="tituloSem">Andamento semanal</h2>
+    <div class="cnt" style="height:calc(100% - 50px)"><div id="gradeSem"></div></div>
+  </div>
+  <div class="box" style="left:895px;top:32px;width:385px;height:95px">
+    <h2>Semana de seleção</h2>
+    <div class="bot" id="slicerSem"></div>
+  </div>
+  <div class="box quad" style="left:895px;top:137px;width:385px;height:94px">
+    <h2>Data de início da obra</h2>
+    <div class="card-n" id="inicioTxt"></div>
+  </div>
+  <div class="box quad" style="left:895px;top:241px;width:385px;height:94px">
+    <h2>Total de dias corridos</h2>
+    <div class="card-n" id="dias"></div>
+    <div class="cap">desde o início da obra</div>
+  </div>
+  <div class="box quad" style="left:895px;top:345px;width:385px;height:94px">
+    <h2>Dias impraticáveis</h2>
+    <div class="card-n" id="chuva"></div>
+    <div class="cap">dias com chuva em algum período</div>
+  </div>
+  <div class="box quad" style="left:895px;top:449px;width:385px;height:94px">
+    <h2>Previsão de término</h2>
+    <div class="card-n" id="previsaoTxt"></div>
+  </div>
+  <div class="box quad" style="left:895px;top:553px;width:385px;height:94px">
+    <h2>Desvio de obra</h2>
+    <div class="card-n" id="desvioTxt"></div>
+    <div class="cap" id="desvioCap"></div>
+  </div>
+  <img class="logo s" data-img="logo">
+</section>
+
+<section class="page" id="p4">
+  <div class="bot" id="slicerFotos" style="position:absolute;left:0;top:12px;width:1280px;text-align:center"></div>
+  <div class="lbl" id="semFotos" style="left:0;top:300px;width:1280px;font-size:20px;display:none">Ainda não há fotos para esta obra.</div>
+  <div class="lbl fl" data-lbl="1" style="left:110px;top:50px;width:520px">1.</div>
+  <div class="box foto" data-slot="1" style="left:110px;top:80px;width:520px;height:270px"></div>
+  <div class="lbl fl" data-lbl="2" style="left:650px;top:50px;width:520px">2.</div>
+  <div class="box foto" data-slot="2" style="left:650px;top:80px;width:520px;height:270px"></div>
+  <div class="lbl fl" data-lbl="3" style="left:110px;top:354px;width:520px">3.</div>
+  <div class="box foto" data-slot="3" style="left:110px;top:384px;width:520px;height:270px"></div>
+  <div class="lbl fl" data-lbl="4" style="left:650px;top:354px;width:520px">4.</div>
+  <div class="box foto" data-slot="4" style="left:650px;top:384px;width:520px;height:270px"></div>
+  <img class="logo s" data-img="logo">
+</section>
+
+<nav id="nav"></nav>
+</div></div>
+<div id="girar">Gire o celular para o modo horizontal para ver o relatório maior. (toque para fechar)</div>
+
+<script>
+const D = {"obra": "Muro de Arrimo - Talude 4 e 5", "titulo_obra": "MURO DE ARRIMO - TALUDE 4 E 5 - IBEMA PAPEL CARTÃO", "inicio": "2026-10-26", "fim_previsto": "2026-12-25", "gerado_em": "2026-11-12", "semanas": [0, 1, 2, 3], "curva": {"semanas": [0, 1, 2, 3, 4, 5, 6, 7, 8], "planejado": [0.0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1.0], "realizado": [0.0, 0.125, 0.185, 0.25, null, null, null, null, null]}, "disciplinas": {"semanas": [1, 2, 3], "series": {"Estacas": [1.0, 1.0, 1.0], "Radier": [0.0, 0.6, 1.0], "Alvenaria": [0.0, 0.0, 0.0], "Dreno": [0.0, 0.0, 0.0], "Terraplanagem final": [0.0, 0.0, 0.0]}}, "atividades": [{"semana": 1, "andamento": "", "concluidas": "1. Limpeza de terreno\n2. Perfuracao de estacas", "proximas": "Posiciocamento de formas para Radier", "observacoes": "Necessario realizar projeto de reforco com Radier, devido à pouca perfuracao das estacas em solo."}, {"semana": 2, "andamento": "", "concluidas": "1. Estacas de concreto", "proximas": "Concretagem do Radier\n\nInício da alvenaria", "observacoes": "Houve um desvio ao planejamento, atrasando em 1 semana a execucao, devido ao fato da alteracao de execucao de blocos de concreto para Radier. Elaborado novo projeto de fundacao."}, {"semana": 3, "andamento": "", "concluidas": "1. Estacas de concreto\n2. Radier", "proximas": "Início da alvenaria", "observacoes": "Finalizada fundacao, e aguardando inicio da alveria. Planejamento atual contempla retomada do cronograma com 1 semana perdida com andamento da alvenaria."}], "semanal": [{"semana": 1, "dia": 0, "periodo": "manha", "clima": "sol", "funcionarios": 1}, {"semana": 1, "dia": 0, "periodo": "tarde", "clima": "sol", "funcionarios": 1}, {"semana": 1, "dia": 1, "periodo": "manha", "clima": "sol", "funcionarios": 4}, {"semana": 1, "dia": 1, "periodo": "tarde", "clima": "sol", "funcionarios": 4}, {"semana": 1, "dia": 2, "periodo": "manha", "clima": "sol", "funcionarios": 4}, {"semana": 1, "dia": 2, "periodo": "tarde", "clima": "sol", "funcionarios": 4}, {"semana": 1, "dia": 3, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 1, "dia": 3, "periodo": "tarde", "clima": "sol", "funcionarios": 3}, {"semana": 1, "dia": 4, "periodo": "manha", "clima": "sol", "funcionarios": 1}, {"semana": 1, "dia": 4, "periodo": "tarde", "clima": "sol", "funcionarios": 1}, {"semana": 2, "dia": 0, "periodo": "manha", "clima": "sol", "funcionarios": null}, {"semana": 2, "dia": 0, "periodo": "tarde", "clima": "sol", "funcionarios": null}, {"semana": 2, "dia": 1, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 2, "dia": 1, "periodo": "tarde", "clima": "sol", "funcionarios": 3}, {"semana": 2, "dia": 2, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 2, "dia": 2, "periodo": "tarde", "clima": "chuva", "funcionarios": 0}, {"semana": 2, "dia": 3, "periodo": "manha", "clima": "chuva", "funcionarios": 0}, {"semana": 2, "dia": 3, "periodo": "tarde", "clima": "sol", "funcionarios": 0}, {"semana": 2, "dia": 4, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 2, "dia": 4, "periodo": "tarde", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 0, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 0, "periodo": "tarde", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 1, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 1, "periodo": "tarde", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 2, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 2, "periodo": "tarde", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 3, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 3, "periodo": "tarde", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 4, "periodo": "manha", "clima": "sol", "funcionarios": 3}, {"semana": 3, "dia": 4, "periodo": "tarde", "clima": "sol", "funcionarios": 3}], "datas": {"1": ["2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30"], "2": ["2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06"], "3": ["2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13"]}, "fotos": {"1": [{"src": "fotos/semana-1/1.jpg?v=c85b43a9", "titulo": "Limpeza de terreno"}, {"src": "fotos/semana-1/2.jpg?v=9d35df6d", "titulo": "Perfuracão Estacas"}, {"src": "fotos/semana-1/3.jpg?v=f4e167a4", "titulo": "Estacas"}, {"src": "fotos/semana-1/4.jpg?v=717d3bb3", "titulo": "Estacas"}], "2": [{"src": "fotos/semana-2/1.jpg?v=05601023", "titulo": "Estacas e formas"}, {"src": "fotos/semana-2/2.jpg?v=b8d178a6", "titulo": "Estacas e formas"}, {"src": "fotos/semana-2/3.jpg?v=043bd7b3", "titulo": "Estacas e formas"}, {"src": "fotos/semana-2/4.jpg?v=26ebc98a", "titulo": "Estacas e formas"}]}, "imagens": {"fundo": "assets/fundo.jpg", "logo": "assets/logo.jpg"}, "cor_fundo": "#e5efdd", "total_executado": 0.25};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = v => new Intl.NumberFormat('pt-BR', {style:'percent', maximumFractionDigits:0}).format(v);
+const SEM = D.semanas;
+const ultima = a => a.length ? a[a.length - 1] : null;
+const capa = document.getElementById('capaTitulo');
+capa.innerHTML = 'RELATÓRIO DE EVOLUÇÃO DE OBRA<br>' + esc(D.titulo_obra);
+if (D.titulo_obra.length > 44) capa.style.fontSize = '13px';
+Chart.defaults.font.family = "'Courier New', Courier, monospace";
+Chart.defaults.font.size = 13;
+Chart.defaults.color = '#F3EEE8';
+Chart.defaults.borderColor = 'transparent';
+
+const cores = ['#E8632B', '#F4A677', '#E9D8C2', '#C9A382', '#C2561F'];
+const nomes = Object.keys(D.disciplinas.series);
+const corDisc = Object.fromEntries(nomes.map((n, i) => [n, cores[i % cores.length]]));
+const semanas = D.curva.semanas.map(s => 'Sem. ' + s);
+const eixo = () => ({x: {grid: {display: false}}, y: {min: 0, max: 1, grid: {display: false}, ticks: {callback: v => fmt(v)}}});
+const dica = () => ({tooltip: {callbacks: {label: c => c.dataset.label + ': ' + fmt(c.parsed.y)}}});
+const charts = {};
+
+const rotulos = {id: 'rotulos', afterDatasetsDraw(chart) {
+  const ctx = chart.ctx;
+  chart.data.datasets.forEach((ds, i) => {
+    if (!chart.isDatasetVisible(i)) return;
+    chart.getDatasetMeta(i).data.forEach((pt, j) => {
+      const v = ds.data[j];
+      if (v == null) return;
+      ctx.save();
+      ctx.font = "13px 'Courier New', Courier, monospace";
+      ctx.fillStyle = '#F3EEE8';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(fmt(v), pt.x, pt.y - 9);
+      ctx.restore();
+    });
+  });
+}};
+
+const gradeTracejada = {id: 'gradeTracejada', beforeDatasetsDraw(chart) {
+  const ctx = chart.ctx, a = chart.chartArea, y = chart.scales.y;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(243,238,232,0.28)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([6, 6]);
+  y.ticks.forEach(t => {
+    const py = Math.round(y.getPixelForValue(t.value)) + 0.5;
+    ctx.beginPath(); ctx.moveTo(a.left, py); ctx.lineTo(a.right, py); ctx.stroke();
+  });
+  ctx.restore();
+}};
+
+charts.linha = new Chart(document.getElementById('cLinha'), {
+  type: 'line',
+  data: {labels: semanas, datasets: [
+    {label: 'Planejado acumulado', data: D.curva.planejado, borderColor: '#F3EEE8', backgroundColor: '#F3EEE8', borderWidth: 3, pointRadius: 5, tension: .25},
+    {label: 'Realizado acumulado', data: D.curva.realizado, borderColor: '#E8632B', backgroundColor: '#E8632B', borderWidth: 3, pointRadius: 5, tension: .25}
+  ]},
+  options: {responsive: true, maintainAspectRatio: false, scales: eixo(), plugins: dica()},
+  plugins: [rotulos, gradeTracejada]
+});
+
+const barrasCentradas = {id: 'barrasCentradas', afterDatasetsDraw(chart) {
+  const ctx = chart.ctx, x = chart.scales.x, y = chart.scales.y;
+  const passo = x.width / D.disciplinas.semanas.length;
+  const base = y.getPixelForValue(0);
+  chart.$barras = [];
+  ctx.save();
+  D.disciplinas.semanas.forEach((_, j) => {
+    const presentes = nomes.filter(n => D.disciplinas.series[n][j] != null);
+    if (!presentes.length) return;
+    const larg = Math.min(passo * 0.8 / presentes.length, 48);
+    const gap = 4;
+    const total = larg * presentes.length + gap * (presentes.length - 1);
+    let esq = x.getPixelForValue(j) - total / 2;
+    presentes.forEach(n => {
+      const v = D.disciplinas.series[n][j];
+      const topo = y.getPixelForValue(v);
+      const cx = esq + larg / 2;
+      ctx.fillStyle = corDisc[n];
+      ctx.fillRect(esq, topo, larg, base - topo);
+      chart.$barras.push({x: esq, y: topo, w: larg, h: base - topo, nome: n, v});
+      ctx.font = "11px 'Courier New', Courier, monospace";
+      ctx.fillStyle = '#F3EEE8';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(fmt(v), cx, topo - 4);
+      esq += larg + gap;
+    });
+  });
+  ctx.restore();
+}};
+
+charts.barra = new Chart(document.getElementById('cBarra'), {
+  type: 'bar',
+  data: {labels: D.disciplinas.semanas.map(s => 'Sem. ' + s), datasets: [{data: D.disciplinas.semanas.map(() => 0), backgroundColor: 'transparent'}]},
+  options: {responsive: true, maintainAspectRatio: false, layout: {padding: {top: 24}}, scales: eixo(), plugins: {legend: {display: false}, tooltip: {enabled: false}}},
+  plugins: [barrasCentradas]
+});
+// as colunas são desenhadas por mim (para ficarem centralizadas), então a caixinha também é minha
+const cvBarra = document.getElementById('cBarra');
+const dicaEtapa = document.createElement('div');
+dicaEtapa.id = 'dicaEtapa';
+cvBarra.parentNode.appendChild(dicaEtapa);
+function mostrarDica(e) {
+  const r = cvBarra.getBoundingClientRect();
+  const k = r.width / cvBarra.offsetWidth || 1;
+  const px = (e.clientX - r.left) / k, py = (e.clientY - r.top) / k;
+  const b = (charts.barra.$barras || []).find(b => px >= b.x && px <= b.x + b.w && py >= b.y - 18 && py <= b.y + b.h + 6);
+  if (!b) { dicaEtapa.style.display = 'none'; return; }
+  dicaEtapa.innerHTML = `<i style="background:${corDisc[b.nome]}"></i>${esc(b.nome)}: ${fmt(b.v)}`;
+  dicaEtapa.style.display = 'block';
+  dicaEtapa.style.left = Math.max(0, Math.min(px + 14, cvBarra.offsetWidth - dicaEtapa.offsetWidth - 4)) + 'px';
+  dicaEtapa.style.top = Math.max(0, py - 40) + 'px';
+}
+cvBarra.addEventListener('pointermove', mostrarDica);
+cvBarra.addEventListener('pointerdown', mostrarDica);
+cvBarra.addEventListener('pointerleave', () => { dicaEtapa.style.display = 'none'; });
+document.getElementById('legBarra').innerHTML = nomes.map(n => `<span><i style="background:${corDisc[n]}"></i>${esc(n)}</span>`).join('');
+
+document.getElementById('card').textContent = fmt(D.total_executado);
+
+let semAtiv = ultima(D.atividades.map(a => a.semana)) ?? ultima(SEM);
+const CAMPOS = [['Atividades em andamento', 'andamento'], ['Atividades concluídas', 'concluidas'], ['Próximas atividades', 'proximas'], ['Observações', 'observacoes']];
+function renderAtiv(w) {
+  semAtiv = w;
+  const a = D.atividades.find(x => x.semana === w) || {};
+  document.getElementById('tituloAtiv').textContent = 'Semana ' + w;
+  document.getElementById('tabela').innerHTML = CAMPOS.map(([rotulo, campo]) =>
+    `<tr><th style="width:42%">${rotulo}</th><td style="padding:10px 6px">${esc(a[campo] || '') || '–'}</td></tr>`).join('');
+  marcarSemana(document.getElementById('slicer'), w, renderAtiv, SEM);
+}
+renderAtiv(semAtiv);
+
+const DIAS = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'];
+const fmtData = iso => { const [a, m, d] = iso.split('-'); return `${d}/${m}/${a.slice(2)}`; };
+const SOL = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E8632B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5" fill="#E8632B"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>';
+const CHUVA = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F4A677" stroke-width="2" stroke-linecap="round"><path d="M7 15a4 4 0 0 1 .5-7.96A5.5 5.5 0 0 1 18 9a3.5 3.5 0 0 1 0 6.5H7z"/><path d="M8 18l-1 2M12 18l-1 2M16 18l-1 2"/></svg>';
+let semSel = ultima(SEM);
+
+function renderSemanal() {
+  const dts = D.datas[semSel] || [];
+  const celulas = ['<div></div>', ...DIAS.map((d, i) => `<div class="dia">${d}${dts[i] ? ' - ' + fmtData(dts[i]) : ''}</div>`)];
+  [['manha', 'Manhã'], ['tarde', 'Tarde']].forEach(([p, rotulo]) => {
+    celulas.push(`<div class="per">${rotulo}</div>`);
+    DIAS.forEach((_, i) => {
+      const r = D.semanal.find(x => x.semana === semSel && x.dia === i && x.periodo === p);
+      const clima = r && r.clima ? `${r.clima === 'sol' ? SOL : CHUVA}<span>${r.clima === 'sol' ? 'Sol' : 'Chuva'}</span>` : '<span>—</span>';
+      const func = r && r.funcionarios != null ? `${r.funcionarios} funcionários` : '—';
+      celulas.push(`<div class="cel">${clima}<span>${func}</span></div>`);
+    });
+  });
+  document.getElementById('gradeSem').innerHTML = celulas.join('');
+}
+function marcarSemana(el, atual, aoMudar, lista) {
+  el.innerHTML = lista.map(s => `<button data-s="${s}" class="${s === atual ? 'on' : ''}">Sem. ${s}</button>`).join('');
+  el.onclick = e => { const b = e.target.closest('button'); if (b) aoMudar(+b.dataset.s); };
+}
+function escolherSemanaSem(w) {
+  semSel = w;
+  document.getElementById('tituloSem').textContent = 'Andamento semanal: Semana ' + w;
+  marcarSemana(document.getElementById('slicerSem'), w, escolherSemanaSem, SEM);
+  renderSemanal();
+}
+const fmtD = d => d.toLocaleDateString('pt-BR');
+const inicioDate = D.inicio ? new Date(D.inicio + 'T00:00:00') : null;
+const diasCorridos = inicioDate ? Math.max(0, Math.floor((Date.now() - inicioDate) / 86400000)) : 0;
+document.getElementById('inicioTxt').textContent = inicioDate ? fmtD(inicioDate) : '—';
+document.getElementById('dias').textContent = inicioDate ? diasCorridos + ' dias' : '—';
+document.getElementById('chuva').textContent =
+  new Set(D.semanal.filter(r => r.clima === 'chuva' && r.dia !== null).map(r => r.semana + '-' + r.dia)).size + ' dias';
+
+// a estimativa usa a data em que o relatório foi gerado, para não mudar sozinha com o passar dos dias
+const geradoEm = D.gerado_em ? new Date(D.gerado_em + 'T00:00:00') : new Date();
+const diasAteGerar = inicioDate ? Math.max(0, Math.round((geradoEm - inicioDate) / 86400000)) : 0;
+const fimEst = (inicioDate && D.total_executado > 0 && diasAteGerar > 0)
+  ? new Date(inicioDate.getTime() + Math.round(diasAteGerar / D.total_executado) * 86400000) : null;
+const fimPrev = D.fim_previsto ? new Date(D.fim_previsto + 'T00:00:00') : null;
+const fimMostrar = fimPrev || fimEst;
+document.getElementById('previsaoTxt').textContent = fimMostrar ? fmtD(fimMostrar) : '—';
+const desvioTxt = document.getElementById('desvioTxt'), desvioCap = document.getElementById('desvioCap');
+if (fimPrev && fimEst) {
+  const n = Math.round((fimEst - fimPrev) / 86400000);
+  desvioTxt.textContent = (n > 0 ? '+' : '') + n + (Math.abs(n) === 1 ? ' dia' : ' dias');
+  desvioCap.textContent = (n > 0 ? 'atraso' : n < 0 ? 'adiantamento' : 'no prazo') + ' · término estimado em ' + fmtD(fimEst);
+} else {
+  desvioTxt.textContent = '—';
+  desvioCap.textContent = fimPrev ? '' : 'informe a data final prevista na aba Parametros';
+}
+
+const SEMFOTOS = Object.keys(D.fotos).map(Number).sort((a, b) => a - b);
+let semFotos = ultima(SEMFOTOS);
+function renderFotos() {
+  const lista = (semFotos !== null && D.fotos[semFotos]) || [];
+  document.querySelectorAll('.foto').forEach((box, i) => {
+    const f = lista[i];
+    box.style.backgroundImage = f ? `url("${f.src}")` : '';
+    const lb = document.querySelector(`[data-lbl="${i + 1}"]`);
+    const t = (i + 1) + '.' + (f && f.titulo ? ' ' + f.titulo : '');
+    lb.textContent = t;
+    lb.style.fontSize = t.length > 30 ? '17px' : '';
+  });
+  document.getElementById('semFotos').style.display = SEMFOTOS.length ? 'none' : '';
+}
+function escolherSemanaFotos(w) {
+  semFotos = w;
+  marcarSemana(document.getElementById('slicerFotos'), w, escolherSemanaFotos, SEMFOTOS);
+  renderFotos();
+}
+
+document.querySelectorAll('[data-img]').forEach(img => {
+  const src = D.imagens[img.dataset.img];
+  if (src) img.src = src; else img.remove();
+});
+
+const nomesPaginas = ['Início', 'Executivo', 'Etapa', 'Semanal', 'Fotos Semanais'];
+const nav = document.getElementById('nav');
+nav.innerHTML = nomesPaginas.map((n, i) => `<button data-i="${i}">${n}</button>`).join('');
+function mostrar(i) {
+  document.querySelectorAll('.page').forEach((p, j) => p.classList.toggle('on', j === i));
+  nav.querySelectorAll('button').forEach((b, j) => b.classList.toggle('on', j === i));
+  Object.values(charts).forEach(c => c.resize());
+  const cor = (i === 0 && D.cor_fundo) ? D.cor_fundo : '';
+  document.documentElement.style.background = cor;
+  document.body.style.background = cor;
+}
+document.getElementById('p0').style.background = D.cor_fundo || '';
+nav.onclick = e => { const b = e.target.closest('button'); if (b) mostrar(+b.dataset.i); };
+
+escolherSemanaSem(semSel);
+escolherSemanaFotos(semFotos);
+mostrar(0);
+
+function ajustar() {
+  const w = document.getElementById('wrap');
+  const W = w.clientWidth, H = w.clientHeight;
+  const s = Math.min(W / 1280, H / 720);
+  document.getElementById('stage').style.transform =
+    `translate(${(W - 1280 * s) / 2}px, ${(H - 720 * s) / 2}px) scale(${s})`;
+  const dpr = Math.max(1, (window.devicePixelRatio || 1) * s);
+  Object.values(charts).forEach(c => { c.options.devicePixelRatio = dpr; c.resize(); });
+  const g = document.getElementById('girar');
+  g.style.display = (!g.dataset.fechado && H > W && W < 700) ? 'block' : 'none';
+}
+document.getElementById('girar').onclick = e => { e.currentTarget.dataset.fechado = '1'; e.currentTarget.style.display = 'none'; };
+addEventListener('resize', ajustar);
+ajustar();
+</script>
+</body>
+</html>
